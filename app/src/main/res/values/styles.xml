@@ -1,0 +1,82 @@
+<resources>
+
+    <style name="AppTheme" parent="AllVersionTheme">
+        <!--无状态栏沉浸-->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AllVersionTheme" parent="Theme.AppCompat.Light">
+        <!--去除原来的ActionBar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/lb500</item>
+        <!--导航栏颜色-->
+        <item name="colorPrimary">@color/lb600</item>
+        <!--控件选中颜色-->
+        <item name="colorAccent">@color/lb500</item>
+        <!--主体文字颜色-->
+        <item name="android:textColor">@color/defaultText</item>
+        <!--主体文字大小 如果不指定文字大小 则使用该字体大小-->
+        <item name="android:textSize">13sp</item>
+        <!--主体行间距-->
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <!--系统窗口背景色-->
+        <item name="android:windowBackground">@color/greyBackground</item>
+
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
+
+    </style>
+
+
+    <style name="toolbar_theme" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:actionBarSize">46dp</item>
+        <item name="android:homeAsUpIndicator">@drawable/back</item>
+    </style>
+    <!--text style-->
+    <style name="textStyle">
+        <item name="android:textColorHint">@color/greyText</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/x28</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+    <!--linearLayout style-->
+    <style name="linearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_height">@dimen/y80</item>
+    </style>
+
+
+    <style name="login_ed">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/y20</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:focusable">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:textSize">@dimen/x30</item>
+    </style>
+
+    <style name="current_cost_textview">
+        <item name="android:layout_width">@dimen/x130</item>
+        <item name="android:layout_height">@dimen/y130</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/y40</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

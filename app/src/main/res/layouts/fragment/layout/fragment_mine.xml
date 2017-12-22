@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:gravity="center"
+        android:background="@drawable/tab_mine_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_mine_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="张三"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="2dp"
+            android:text="欢迎登录系统 !" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_modify_password"
+        style="@style/linearLayoutStyle"
+        android:layout_marginTop="@dimen/x20">
+
+        <TextView
+            style="@style/textStyle"
+            android:layout_marginLeft="@dimen/x20"
+            android:text="@string/mine_modify_password" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/img_right_arrows" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_version_update"
+        style="@style/linearLayoutStyle">
+
+        <TextView
+            style="@style/textStyle"
+            android:layout_marginLeft="@dimen/x20"
+            android:text="@string/mine_version_update" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/img_right_arrows" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/y80"
+        android:background="@drawable/btn_red_bg"
+        android:text="@string/mine_logout"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x32" />
+</LinearLayout>

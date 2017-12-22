@@ -1,0 +1,5 @@
+<resources>
+    <!--version大于等于19时，状态栏沉浸-->
+    <dimen name="statusBarHeight">20dp</dimen>
+
+</resources>

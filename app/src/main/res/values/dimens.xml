@@ -1,0 +1,72 @@
+<resources>
+    <!-- Default screen margins-->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_margin_left">16dp</dimen>
+    <dimen name="activity_margin_right">12dp</dimen>
+
+    <!--version小于19时，无状态栏沉浸-->
+    <dimen name="statusBarHeight">0dp</dimen>
+
+
+    <!--边距-->
+    <dimen name="homeTopHeight">200dp</dimen>
+    <dimen name="widgetNomarlHeight">40dp</dimen>
+    <dimen name="topTabHeight">40dp</dimen>
+    <dimen name="photoHeight">50dp</dimen>
+    <dimen name="marginMini">4dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginSmallNeg">-16dp</dimen>
+    <dimen name="marginNormal">16dp</dimen>
+    <dimen name="marginBig">24dp</dimen>
+    <dimen name="marginDiver">1dp</dimen>
+    <dimen name="marginGridLeft">24dp</dimen>
+    <dimen name="popTitlePadding">10dp</dimen>
+
+    <dimen name="describeHeight">120dp</dimen>
+    <dimen name="dialogHeight">200dp</dimen>
+
+
+    <!--数字编号宽度-->
+    <dimen name="numWidth">32dp</dimen>
+    <dimen name="numWidthLeft">48dp</dimen>
+    <!--运行排名数值的宽度-->
+    <dimen name="rankValueWidth">74dp</dimen>
+    <!--icon图标大小-->
+    <dimen name="iconTextSmall">11sp</dimen>
+    <dimen name="iconText">13sp</dimen>
+    <dimen name="iconWithPadding">40sp</dimen>
+    <dimen name="iconPadding">14sp</dimen>
+    <dimen name="iconPaddingSmall">10sp</dimen>
+    <dimen name="iconPaddingSmallPencil">11sp</dimen>
+    <dimen name="telImgSize">20dp</dimen>
+
+    <dimen name="stationDataIcon">20dp</dimen>
+    <dimen name="voiceRecord">100dp</dimen>
+
+    <dimen name="right_text_margin">5dp</dimen>
+    <!--文字大小-->
+    <dimen name="text0x">6sp</dimen>
+    <dimen name="text1x">8sp</dimen>
+    <dimen name="text2x">13sp</dimen>
+    <dimen name="text3x">18sp</dimen>
+    <dimen name="text4x">23sp</dimen>
+    <dimen name="text5x">28sp</dimen>
+    <dimen name="text6x">48sp</dimen>
+    <dimen name="text10x">100sp</dimen>
+
+    <!-- 单item padding-->
+    <dimen name="itemTop">12dp</dimen>
+    <dimen name="itemBottom">12dp</dimen>
+    <dimen name="itemLeft">8dp</dimen>
+    <dimen name="itemRight">8dp</dimen>
+
+
+    <!--Rcc-->
+    <dimen name="rccQueryTopHeight">30dp</dimen>
+
+    <!--LinearLayout 水平分割线 -->
+    <dimen name="divider_width">1dp</dimen>
+
+</resources>

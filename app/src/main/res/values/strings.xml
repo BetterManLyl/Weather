@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">智慧水务</string>
+
+    <string name="login_submit">登录</string>
+    <string name="prepay_cost_tenant">请选择要预缴的商户</string>
+    <string name="prepay_money">金额</string>
+
+    <string name="mine_modify_password">密码修改</string>
+    <string name="mine_version_update">版本更新</string>
+    <string name="mine_logout">注销登录</string>
+
+    <string name="modify_old_password">请输入旧密码</string>
+    <string name="modify_new_password">请输入新密码</string>
+    <string name="modify_confirm_password">请再次输入新密码</string>
+    <string name="modify_sure_modify">确认修改</string>
+
+    <string name="current_cost">商户名/手机号/户号</string>
+
+    <string name="desc">@null</string>
+    <string name="insert_card">插入卡</string>
+    <string name="down_fail">下载失败</string>
+    <string name="is_downing">正在下载</string>
+    <string name="down_sucess">下载成功</string>
+
+</resources>

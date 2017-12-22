@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/linearLayoutStyle"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@color/greyBackground"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <EditText
+            android:id="@+id/ed_search_merchants"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y70"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ed_bg"
+            android:drawableLeft="@drawable/search"
+            android:drawablePadding="10dp"
+            android:hint="@string/current_cost"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/x22" />
+
+        <FrameLayout
+            android:id="@+id/fl_delete"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y20"
+                android:layout_gravity="center"
+                android:src="@drawable/current_cost_delete" />
+        </FrameLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x240"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_all_commercial_tenant"
+                    style="@style/current_cost_textview"
+                    android:layout_marginLeft="@dimen/x21"
+                    android:background="@drawable/circle_fa7070_bg" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x10"
+                    android:gravity="center"
+                    android:text="总商户"
+                    android:textColor="@color/defaultText"
+                    android:textSize="@dimen/x24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_balance_deficiency"
+                    style="@style/current_cost_textview"
+                    android:layout_marginLeft="@dimen/x21"
+                    android:background="@drawable/circle_78b0ff_bg" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:gravity="center"
+                    android:text="余额不足商户"
+                    android:textColor="@color/defaultText"
+                    android:textSize="@dimen/x24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_need_pay_user"
+                    style="@style/current_cost_textview"
+                    android:layout_marginLeft="@dimen/x21"
+                    android:background="@drawable/circle_9bde56_bg" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:gravity="center"
+                    android:text="需缴费商户"
+                    android:textColor="@color/defaultText"
+                    android:textSize="@dimen/x24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_arrearage_money"
+                    style="@style/current_cost_textview"
+                    android:layout_marginLeft="@dimen/x21"
+                    android:background="@drawable/circle_ffaf48_bg" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:gravity="center"
+                    android:text="欠费总金额"
+                    android:textColor="@color/defaultText"
+                    android:textSize="@dimen/x24" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"></View>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_query_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:text="查询中..."
+        android:textColor="@color/color666"
+        android:visibility="gone" />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recycler_view1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/no_data" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="暂无数据"
+            android:textColor="@color/color666"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>
