@@ -37,6 +37,7 @@ public class MineFragment extends BaseFragment implements MineView {
     @BindView(R.id.ll_modify_password)
     LinearLayout llModifyPassword;
     @BindView(R.id.ll_version_update)
+
     LinearLayout llVersionUpdate;
     @BindView(R.id.btn_logout)
     Button btnLogout;
