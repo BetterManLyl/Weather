@@ -1,7 +1,6 @@
 package lyl.weather.home.fragment.mine;
 
 import lyl.weather.base.IBaseModel;
-import lyl.weather.model.LoginSucess;
 
 /**
  * @author lyl
@@ -11,4 +10,6 @@ import lyl.weather.model.LoginSucess;
 public interface IMineModel  {
 
     void getUserInfo(IBaseModel.RequestListener requestListener);
+
+    void versionInfo(IBaseModel.RequestListener requestListener);
 }

@@ -5,6 +5,9 @@ import android.text.TextUtils;
 
 import com.rn.base.user.LocalCfg;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import lyl.weather.home.HomeActivity;
 import lyl.weather.welcome.IWelcomeModel;
 
@@ -25,7 +28,7 @@ public class LoginPresenterImpl implements LoginPresenter {
         this.loginView = loginView;
         this.context = context;
         iloginModel = new IloginModelImp();
-        localCfg=new LocalCfg();
+        localCfg = new LocalCfg();
     }
 
 
@@ -62,12 +65,20 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void init() {
-        String userName=localCfg.readCfgStr("login_name");
-        String userPass=localCfg.readCfgStr("login_pass");
-        if (!TextUtils.isEmpty(userName)){
-            loginView.initEd(userName,userPass);
+        String userName = localCfg.readCfgStr("login_name");
+        String userPass = localCfg.readCfgStr("login_pass");
+        if (!TextUtils.isEmpty(userName)) {
+            loginView.initEd(userName, userPass);
         }
     }
+
+    @Override
+    public HashMap<String, String> getLocalHashMap() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("", "");
+        return map;
+    }
+
 
     public boolean isEmpty(String content) {
         if (!TextUtils.isEmpty(content)) {

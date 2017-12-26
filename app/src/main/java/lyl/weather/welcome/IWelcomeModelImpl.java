@@ -50,6 +50,8 @@ public class IWelcomeModelImpl implements IWelcomeModel {
                     //保存用户信息
                     UserInfo.getInstance().saveLoginUserInfo(loginSucess.getToken(), userName, userPass);
                     getMenu(onLoginListener);
+                } else {
+                    onLoginListener.error("登录失败");
                 }
             }
         });

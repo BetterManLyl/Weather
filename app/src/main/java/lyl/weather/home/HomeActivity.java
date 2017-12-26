@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,7 @@ import lyl.weather.home.fragment.currentcost.CurrentCostFragment;
 import lyl.weather.home.fragment.mine.MineFragment;
 import lyl.weather.home.fragment.record.RecordFragment;
 import lyl.weather.utils.Constants;
+import lyl.weather.utils.MyUtils;
 import lyl.weather.view.MyViewPager;
 
 import static lyl.weather.utils.Constants.MENU_COST_PREPARE;
@@ -49,7 +54,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     //用户最后一次点击的菜单
     public int TAB_POSITION = -1;
 
-    private String [] titles=new String[]{};
+    private String[] titles = new String[]{};
 
     @Override
     public int layoutId() {
@@ -63,6 +68,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void initView() {
+
         homePresenter = new HomePresenterImpl(this);
         homePresenter.initMenu();
         homePresenter.init();
@@ -119,6 +125,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         tabLayout.getTabAt(TAB_POSITION).select();
         setToolbarTitle(titles[TAB_POSITION]);
     }
+
     /**
      * @param title tab标题
      * @return tab的自定义view
@@ -138,6 +145,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         }
         return view;
     }
+
     @Override
     public void init(String[] titles, boolean isHasmenu) {
         ArrayList<View> views = new ArrayList<View>();
@@ -151,8 +159,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
             views.add(getTabViewByTitle(MENU_COST_PREPARE));
             views.add(getTabViewByTitle(MENU_PREPAER_RECORD));
             views.add(getTabViewByTitle(Constants.MENU_MINE));
-            titles=new String[]{MENU_CURRNT_COST, MENU_COST_PREPARE, MENU_PREPAER_RECORD, Constants.MENU_MINE};
-            this.titles=titles;
+            titles = new String[]{MENU_CURRNT_COST, MENU_COST_PREPARE, MENU_PREPAER_RECORD, Constants.MENU_MINE};
+            this.titles = titles;
         } else {
 
             fragments.add(CurrentCostFragment.newInstance());
@@ -161,8 +169,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
             views.add(getTabViewByTitle(MENU_CURRNT_COST));
             views.add(getTabViewByTitle(MENU_PREPAER_RECORD));
             views.add(getTabViewByTitle(Constants.MENU_MINE));
-            titles=new String[]{MENU_CURRNT_COST, MENU_PREPAER_RECORD, Constants.MENU_MINE};
-            this.titles=titles;
+            titles = new String[]{MENU_CURRNT_COST, MENU_PREPAER_RECORD, Constants.MENU_MINE};
+            this.titles = titles;
         }
         tabAdapter = new TabAdapter(getSupportFragmentManager(), titles, fragments);
         vp_pager.setAdapter(tabAdapter);

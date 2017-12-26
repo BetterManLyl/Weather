@@ -25,11 +25,13 @@ public class IloginModelImp implements IloginModel {
 
     private String userPassMd = "";
 
+    private LoginPresenter presenter;
+
     @Override
     public void login(Context context, final String userName, final String userPass,
                       final IWelcomeModel.OnLoginListener loginListener) {
 
-
+        //presenter.getLocalHashMap();
         userPassMd = MyUtils.getMD5(userPass);
         Map<String, String> queryMap = new HashMap<>();
 

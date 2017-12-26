@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 修改密码
  */
 
-public class ModifyPass implements Serializable {
+public class ModifyPassword implements Serializable {
 
     private boolean result;
     private String message;
@@ -30,7 +30,7 @@ public class ModifyPass implements Serializable {
 
     @Override
     public String toString() {
-        return "ModifyPass{" +
+        return "ModifyPassword{" +
                 "result=" + result +
                 ", message='" + message + '\'' +
                 '}';

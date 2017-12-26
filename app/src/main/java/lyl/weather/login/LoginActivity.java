@@ -49,7 +49,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
         loginPresenter = new LoginPresenterImpl(LoginActivity.this, this);
     }
 
-
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
         loginPresenter.login(edUserName.getText().toString(), edUserPass.getText().toString());

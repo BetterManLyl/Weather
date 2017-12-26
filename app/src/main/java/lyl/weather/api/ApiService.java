@@ -13,6 +13,7 @@ import lyl.weather.model.Customers;
 import lyl.weather.model.LoginSucess;
 import lyl.weather.model.Logout;
 import lyl.weather.model.Menu;
+import lyl.weather.model.ModifyPassword;
 import lyl.weather.model.ResultInfo;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
@@ -111,7 +112,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept:  application/json"})
     @PUT("/api/phone/users/passwords")
-    Observable<ModifyPass> modifuPass(@Body ModifyPass modifyPass);
+    Observable<ModifyPassword> modifuPass(@Body ModifyPass modifyPass);
 
 
     /**

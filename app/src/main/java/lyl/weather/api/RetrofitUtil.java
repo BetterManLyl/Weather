@@ -14,6 +14,7 @@ import lyl.weather.model.Customers;
 import lyl.weather.model.LoginSucess;
 import lyl.weather.model.Logout;
 import lyl.weather.model.Menu;
+import lyl.weather.model.ModifyPassword;
 import lyl.weather.model.ResultInfo;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
@@ -152,9 +153,10 @@ public class RetrofitUtil {
      * @param modifyPass
      * @param subscriber
      */
-    public void modifyPass(ModifyPass modifyPass, Subscriber<ModifyPass> subscriber) {
+    public void modifyPass(ModifyPass modifyPass, Subscriber<ModifyPassword> subscriber) {
         mApiService.modifuPass(modifyPass)
-                .compose(RxHelper.<ModifyPass>rxSchedulerHelper())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
                 .subscribe(subscriber);
     }
 

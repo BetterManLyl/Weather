@@ -2,7 +2,6 @@ package lyl.weather.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -60,7 +59,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Override
     public void showProgress(String message) {
-
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage(message);
         progressDialog.show();
@@ -79,13 +77,15 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     }
 
     private void lazyLoad() {
-        //这里进行双重标记判断,是因为setUserVisibleHint会多次回调,并且会在onCreateView执行前回调,必须确保onCreateView加载完毕且页面可见,才加载数据
+        //这里进行双重标记判断,是因为setUserVisibleHint会多次回调,并且会在onCreateView执行前回调,
+        // 必须确保onCreateView加载完毕且页面可见,才加载数据
         if (isCreated && isUIVisible) {
             pageIndex = 1;
             isLoadMore = false;
             queryData();
             //数据加载完毕,恢复标记,防止重复加载
-            //isViewCreated = false;  根据需求需要，是否只有在销毁之后才会重新加载，还是每次可见都重新加载  注释的话就是每次可见都加载
+            //isViewCreated = false;  根据需求需要，是否只有在销毁之后才会重新加载，还是每次可见都重新加载
+            // 注释的话就是每次可见都加载
             //isCreated = false;
             isUIVisible = false;
         }
@@ -103,5 +103,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        //页面销毁,恢复标记
+        isCreated = false;
+        isUIVisible = false;
+        pageIndex = 1;
     }
 }

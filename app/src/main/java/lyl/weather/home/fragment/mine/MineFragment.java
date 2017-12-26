@@ -1,20 +1,28 @@
 package lyl.weather.home.fragment.mine;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rn.base.utils.MyToast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import lyl.weather.R;
 import lyl.weather.base.BaseFragment;
+import lyl.weather.event.VersionEvent;
+import lyl.weather.home.activity.ModifyPasswordActivity;
 import lyl.weather.model.UserInfo;
+import lyl.weather.model.VersionInfo;
+import lyl.weather.utils.Constants;
+import lyl.weather.utils.MyUtils;
 
 /**
  * @author lyl
@@ -60,8 +68,19 @@ public class MineFragment extends BaseFragment implements MineView {
     }
 
     @Override
-    public void checkVersion() {
+    public void goActivity(Class c) {
+        startActivity(new Intent(getActivity(), c));
+    }
 
+    @Override
+    public void versionInfo(VersionInfo response) {
+        hideProgerss();
+        showToast("需要更新...");
+    }
+
+    @Override
+    public Context getContexts() {
+        return getActivity();
     }
 
 
@@ -71,10 +90,14 @@ public class MineFragment extends BaseFragment implements MineView {
             case R.id.tv_mine_username:
                 break;
             case R.id.ll_modify_password:
+                goActivity(ModifyPasswordActivity.class);
                 break;
             case R.id.ll_version_update:
+                showProgress("查询中");
+                iMinePresenter.getVersionInfo();
                 break;
             case R.id.btn_logout:
+                //  iMinePresenter.showLogoutDialog();
                 break;
             default:
                 break;

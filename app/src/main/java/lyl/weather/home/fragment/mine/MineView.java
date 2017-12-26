@@ -1,7 +1,10 @@
 package lyl.weather.home.fragment.mine;
 
+import android.content.Context;
+
 import lyl.weather.base.BaseView;
 import lyl.weather.model.UserInfo;
+import lyl.weather.model.VersionInfo;
 
 /**
  * @author lyl
@@ -12,5 +15,9 @@ public interface MineView extends BaseView{
 
     void getUserInfo(UserInfo userInfo);
 
-    void checkVersion();
+    void goActivity(Class c);
+
+    void versionInfo(VersionInfo versionInfo);
+
+    Context getContexts();
 }

@@ -7,7 +7,7 @@ android {
         applicationId "lyl.weather"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
+        versionCode 2017
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -26,7 +26,8 @@ android {
                     'src/main/res/layouts/welcome',
                     'src/main/res/layouts/login',
                     'src/main/res/layouts/home',
-                    'src/main/res/layouts/fragment'
+                    'src/main/res/layouts/fragment',
+                    'src/main/res/layouts/modify'
             ]
 
         }

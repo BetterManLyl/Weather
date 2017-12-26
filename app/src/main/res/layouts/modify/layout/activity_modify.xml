@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/ac_toolbar"></include>
+
+    <LinearLayout
+        style="@style/linearLayoutStyle"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/ed_old_password"
+            style="@style/textStyle"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="@string/modify_old_password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colore5e5e5"></View>
+
+    <LinearLayout style="@style/linearLayoutStyle">
+
+        <EditText
+            android:id="@+id/ed_new_password"
+            style="@style/textStyle"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="@string/modify_new_password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colore5e5e5"></View>
+
+    <LinearLayout style="@style/linearLayoutStyle">
+
+        <EditText
+            android:id="@+id/ed_confirm_password"
+            style="@style/textStyle"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:hint="@string/modify_confirm_password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:singleLine="true" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_modify_pass_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_red_bg"
+        android:text="@string/modify_sure_modify"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x32" />
+
+</LinearLayout>
