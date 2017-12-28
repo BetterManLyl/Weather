@@ -1,9 +1,5 @@
 package lyl.weather.home.fragment.mine;
 
-import android.content.Context;
-
-import com.rn.base.utils.MyToast;
-
 import lyl.weather.base.IBaseModel;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
@@ -50,6 +46,7 @@ public class MinePresenterImpl implements IMinePresenter {
 
     @Override
     public void getVersionInfo() {
+        mineView.showProgress("查询中");
         iMineModel.versionInfo(new IBaseModel.RequestListener<VersionInfo>() {
             @Override
             public void success(VersionInfo response) {
@@ -58,6 +55,7 @@ public class MinePresenterImpl implements IMinePresenter {
                 String versionCode = response.getVersion();
                 String apkUrl = response.getApkUrl();
                 if (Integer.parseInt(versionCode) > currentVersionCode) {
+
                     mineView.versionInfo(response);
                 } else {
                    mineView.showToast("已经是最新版本");

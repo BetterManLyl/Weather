@@ -7,11 +7,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.blankj.utilcode.util.ToastUtils;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import lyl.weather.R;
@@ -46,7 +41,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void initView() {
-        loginPresenter = new LoginPresenterImpl(LoginActivity.this, this);
+        loginPresenter = new LoginPresenterImpl(this);
     }
 
     @OnClick(R.id.btn_login)
@@ -91,4 +86,5 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
 }

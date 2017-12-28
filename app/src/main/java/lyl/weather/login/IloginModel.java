@@ -1,8 +1,7 @@
 package lyl.weather.login;
 
-import android.content.Context;
-
 import lyl.weather.base.IBaseModel;
+import lyl.weather.base.ServerSuccessListener;
 import lyl.weather.welcome.IWelcomeModel;
 
 /**
@@ -12,10 +11,7 @@ import lyl.weather.welcome.IWelcomeModel;
 
 public interface IloginModel extends IBaseModel{
 
-    void login(Context context,String userName, String userPass,
-               IWelcomeModel.OnLoginListener loginListener);
+    void login(String userName, String userPass,ServerSuccessListener serverSuccessListener);
 
-    void getMenu(IWelcomeModel.OnLoginListener onLoginListener);
-
-    void initView();
+    void getMenu( ServerSuccessListener serverSuccessListener);
 }

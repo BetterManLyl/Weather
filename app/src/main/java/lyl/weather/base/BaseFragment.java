@@ -1,6 +1,8 @@
 package lyl.weather.base;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,6 +39,13 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         return view;
     }
 
+    public void goActivity(Class c) {
+        startActivity(new Intent(getActivity(), c));
+    }
+
+    public Context getContexts() {
+        return this.getActivity();
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

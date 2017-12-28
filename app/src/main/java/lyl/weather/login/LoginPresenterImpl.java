@@ -5,11 +5,8 @@ import android.text.TextUtils;
 
 import com.rn.base.user.LocalCfg;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import lyl.weather.base.ServerSuccessListener;
 import lyl.weather.home.HomeActivity;
-import lyl.weather.welcome.IWelcomeModel;
 
 /**
  * @author lyl
@@ -21,32 +18,28 @@ public class LoginPresenterImpl implements LoginPresenter {
     private LoginView loginView;
     private IloginModel iloginModel;
 
-    private Context context;
     private LocalCfg localCfg;
 
-    public LoginPresenterImpl(LoginView loginView, Context context) {
+    public LoginPresenterImpl(LoginView loginView) {
         this.loginView = loginView;
-        this.context = context;
-        iloginModel = new IloginModelImp();
+        iloginModel = new IloginModelImp(this);
         localCfg = new LocalCfg();
     }
 
 
     @Override
     public void login(String userName, String userPass) {
-        loginView.showProgress("登录中...");
         filiter(userName, userPass);
-        iloginModel.login(context, userName, userPass, new IWelcomeModel.OnLoginListener() {
+
+        iloginModel.login(userName, userPass, new ServerSuccessListener() {
             @Override
-            public void success(String message) {
-                loginView.hideProgerss();
+            public void success(Object o) {
                 loginView.goActivity(HomeActivity.class);
             }
 
             @Override
             public void error(String message) {
                 loginView.showToast(message);
-                loginView.hideProgerss();
             }
         });
     }
@@ -63,22 +56,6 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
     }
 
-    @Override
-    public void init() {
-        String userName = localCfg.readCfgStr("login_name");
-        String userPass = localCfg.readCfgStr("login_pass");
-        if (!TextUtils.isEmpty(userName)) {
-            loginView.initEd(userName, userPass);
-        }
-    }
-
-    @Override
-    public HashMap<String, String> getLocalHashMap() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("", "");
-        return map;
-    }
-
 
     public boolean isEmpty(String content) {
         if (!TextUtils.isEmpty(content)) {
@@ -91,4 +68,11 @@ public class LoginPresenterImpl implements LoginPresenter {
     public void requestServer() {
 
     }
+
+    @Override
+    public Context getContext() {
+        return loginView.getContext();
+    }
+
+
 }

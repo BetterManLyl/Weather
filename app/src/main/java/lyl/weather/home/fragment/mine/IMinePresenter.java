@@ -1,7 +1,5 @@
 package lyl.weather.home.fragment.mine;
 
-import android.content.Context;
-
 /**
  * @author lyl
  * @date 2017/12/22.

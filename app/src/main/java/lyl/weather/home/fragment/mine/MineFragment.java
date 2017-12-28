@@ -8,21 +8,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.rn.base.utils.MyToast;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import lyl.weather.R;
 import lyl.weather.base.BaseFragment;
-import lyl.weather.event.VersionEvent;
 import lyl.weather.home.activity.ModifyPasswordActivity;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
-import lyl.weather.utils.Constants;
-import lyl.weather.utils.MyUtils;
 
 /**
  * @author lyl
@@ -37,7 +29,6 @@ public class MineFragment extends BaseFragment implements MineView {
     @BindView(R.id.ll_modify_password)
     LinearLayout llModifyPassword;
     @BindView(R.id.ll_version_update)
-
     LinearLayout llVersionUpdate;
     @BindView(R.id.btn_logout)
     Button btnLogout;
@@ -94,11 +85,10 @@ public class MineFragment extends BaseFragment implements MineView {
                 goActivity(ModifyPasswordActivity.class);
                 break;
             case R.id.ll_version_update:
-                showProgress("查询中");
                 iMinePresenter.getVersionInfo();
                 break;
             case R.id.btn_logout:
-                //  iMinePresenter.showLogoutDialog();
+                //iMinePresenter.showLogoutDialog();
                 break;
             default:
                 break;

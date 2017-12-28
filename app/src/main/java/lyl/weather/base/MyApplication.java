@@ -1,8 +1,5 @@
 package lyl.weather.base;
 
-import android.app.Application;
-
-import com.blankj.utilcode.util.LogUtils;
 import com.rn.base.application.BaseApplication;
 
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash;

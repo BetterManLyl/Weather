@@ -1,22 +1,16 @@
 package lyl.weather.base;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.rn.base.Manager.ActivitiManager;
 import com.rn.base.user.LocalCfg;
 
@@ -25,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import lyl.weather.R;
-import lyl.weather.home.activity.ModifyPasswordActivity;
 import lyl.weather.login.LoginActivity;
 import rx.Observable;
 import rx.Observer;
@@ -38,12 +31,11 @@ import rx.functions.Func1;
  * @date 2017/12/20.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity extends BaseRootActivity  {
     public LocalCfg localCfg;
     Unbinder unbinder;
-    private long currentTime = 0;
+
     private View rootView;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,25 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         unbinder = ButterKnife.bind(this);
         localCfg = new LocalCfg();
         initView();
-    }
-
-    @Override
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showProgress(String message) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(message);
-        progressDialog.show();
-    }
-
-    @Override
-    public void hideProgerss() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
     }
 
     @Override
@@ -114,10 +87,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         pop.setBackgroundDrawable(null);
         pop.setFocusable(false);
         pop.showAtLocation(rootView, Gravity.CENTER, 0, 0);
-        countDownTime(3,"请以新密码重新登录");
+        countDownTime(3, "请以新密码重新登录");
     }
 
-    public void countDownTime(final int count, final String message){
+    public void countDownTime(final int count, final String message) {
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .take(count + 1)
                 .map(new Func1<Long, Long>() {
@@ -154,10 +127,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
             @Override
             public void onNext(Long integer) {
-                tv_pop_messageTwo.setText( message+ "(" + integer + "s)");
+                tv_pop_messageTwo.setText(message + "(" + integer + "s)");
             }
         });
     }
+
     /**
      * 设置弹出框弹出时，外部变暗
      *
@@ -169,21 +143,5 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         getWindow().setAttributes(lpParams);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (this instanceof ModifyPasswordActivity) {
-            return super.onKeyDown(keyCode, event);
-        }
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (System.currentTimeMillis() - currentTime > 2000) {
-                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                currentTime = System.currentTimeMillis();
-            } else {
-                ActivityUtils.finishAllActivities();
-                finish();
-            }
 
-        }
-        return false;
-    }
 }

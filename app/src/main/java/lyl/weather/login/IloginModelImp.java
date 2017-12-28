@@ -1,7 +1,5 @@
 package lyl.weather.login;
 
-import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.rn.base.user.UserInfo;
@@ -10,8 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lyl.weather.api.RetrofitUtil;
+import lyl.weather.base.ServerSuccessListener;
 import lyl.weather.model.LoginSucess;
 import lyl.weather.model.Menu;
+import lyl.weather.rxutil.ProgressSubscriber;
+import lyl.weather.rxutil.SubscriberOnNextListener;
 import lyl.weather.utils.MyUtils;
 import lyl.weather.welcome.IWelcomeModel;
 import rx.Subscriber;
@@ -25,49 +26,46 @@ public class IloginModelImp implements IloginModel {
 
     private String userPassMd = "";
 
-    private LoginPresenter presenter;
+    private LoginPresenter loginPresenter;
+
+    public IloginModelImp(LoginPresenter loginPresenter) {
+        this.loginPresenter = loginPresenter;
+
+    }
 
     @Override
-    public void login(Context context, final String userName, final String userPass,
-                      final IWelcomeModel.OnLoginListener loginListener) {
-
-        //presenter.getLocalHashMap();
+    public void login(final String userName, final String userPass,
+                      final ServerSuccessListener serverSuccessListener) {
         userPassMd = MyUtils.getMD5(userPass);
         Map<String, String> queryMap = new HashMap<>();
 
         queryMap.put("loginName", userName);
         queryMap.put("password", userPassMd);
-        RetrofitUtil.getInstance().login(queryMap,
-                new Subscriber<LoginSucess>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
+        RetrofitUtil.getInstance().login(queryMap, new ProgressSubscriber<LoginSucess>
+                (new SubscriberOnNextListener<LoginSucess>() {
+            @Override
+            public void onNext(LoginSucess loginSucess) {
+                if (loginSucess.isResult()) {
+                    //保存用户信息
+                    UserInfo.getInstance().saveLoginUserInfo(loginSucess.getToken(), userName, userPass);
+                    getMenu(serverSuccessListener);
 
-                    @Override
-                    public void onError(Throwable e) {
+                } else {
+                    serverSuccessListener.error(loginSucess.getMessage());
+                }
+                Log.e("lyl", "onNext: " + loginSucess.getMessage());
+            }
 
-                    }
+            @Override
+            public void onError(int code, String message) {
 
-                    @Override
-                    public void onNext(LoginSucess loginSucess) {
-                        if (loginSucess.isResult()) {
-                            //保存用户信息
-                            UserInfo.getInstance().saveLoginUserInfo(loginSucess.getToken(), userName, userPass);
-                            getMenu(loginListener);
-
-                        } else {
-                            loginListener.error(loginSucess.getMessage());
-                        }
-                        Log.e("lyl", "onNext: " + loginSucess.getMessage());
-                    }
-                });
-
-
+            }
+        },loginPresenter.getContext(),true));
     }
 
     @Override
-    public void getMenu(final IWelcomeModel.OnLoginListener onLoginListener) {
+    public void getMenu(final ServerSuccessListener serverSuccessListener) {
         RetrofitUtil.getInstance().getMenu(new Subscriber<Menu>() {
             @Override
             public void onCompleted() {
@@ -76,7 +74,7 @@ public class IloginModelImp implements IloginModel {
 
             @Override
             public void onError(Throwable e) {
-                onLoginListener.error("");
+                serverSuccessListener.error("");
             }
 
             @Override
@@ -86,17 +84,11 @@ public class IloginModelImp implements IloginModel {
                 } else {
                     UserInfo.getInstance().saveMenu("");
                 }
-                onLoginListener.success("登录成功");
+                serverSuccessListener.success("登录成功");
             }
         });
     }
 
-    @Override
-    public void initView() {
-        if (!TextUtils.isEmpty(UserInfo.getInstance().getUserName())){
-
-        }
-    }
 
     @Override
     public void requestServer(RequestListener requestListener) {

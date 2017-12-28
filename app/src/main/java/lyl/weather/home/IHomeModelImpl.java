@@ -29,7 +29,6 @@ public class IHomeModelImpl implements IHomeModel {
         } else {
             isHas = false;
             getMenuListener.notHas();
-
         }
     }
 
