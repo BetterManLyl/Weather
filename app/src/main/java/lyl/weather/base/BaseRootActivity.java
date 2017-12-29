@@ -18,7 +18,7 @@ import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
  * @date 2017/12/27.
  */
 
-public abstract class BaseRootActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseRootActivity extends AppCompatActivity implements BaseControl.BaseView {
 
     private ProgressDialog progressDialog;
     private Context context;

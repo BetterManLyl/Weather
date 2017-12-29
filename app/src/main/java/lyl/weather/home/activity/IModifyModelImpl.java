@@ -1,8 +1,9 @@
 package lyl.weather.home.activity;
 
 import lyl.weather.api.RetrofitUtil;
+import lyl.weather.control.CurrentCostControl;
 import lyl.weather.control.ModifyControl;
-import lyl.weather.home.fragment.currentcost.ICurrentModel;
+
 
 import lyl.weather.model.ModifyPassword;
 import rx.Subscriber;
@@ -20,7 +21,7 @@ public class IModifyModelImpl implements ModifyControl.IModifyModel {
     }
 
     @Override
-    public void modifyPass(final ICurrentModel.GetSuccess<ModifyPassword> modifyPassGetSuccess) {
+    public void modifyPass(final CurrentCostControl.ICurrentModel.GetSuccess<ModifyPassword> modifyPassGetSuccess) {
 
         RetrofitUtil.getInstance()
                 .modifyPass(iModifyPresenter.getModifyPass(),

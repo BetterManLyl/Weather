@@ -2,9 +2,7 @@ package lyl.weather.home.fragment.costprepay;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,12 +12,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import lyl.weather.R;
 import lyl.weather.base.BaseFragment;
-import lyl.weather.base.BaseView;
+import lyl.weather.control.CostPrepayControl;
 import lyl.weather.event.SearchEvent;
 import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
 
@@ -29,7 +25,7 @@ import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
  * 费用预缴
  */
 
-public class CostPrepayFragment extends BaseFragment implements CostPrepayView {
+public class CostPrepayFragment extends BaseFragment implements CostPrepayControl.CostPrepayView {
     @BindView(R.id.tv_cost_prepare_shanghu)
     TextView tvCostPrepareShanghu;
     @BindView(R.id.tv_message)
@@ -44,7 +40,7 @@ public class CostPrepayFragment extends BaseFragment implements CostPrepayView {
     Button btnNextStep;
     private int id;
 
-    private CostPrepayPresenter costPresenter;
+    private CostPrepayControl.CostPrepayPresenter costPresenter;
 
     public static CostPrepayFragment newInstance() {
         CostPrepayFragment costPrepayFragment = new CostPrepayFragment();

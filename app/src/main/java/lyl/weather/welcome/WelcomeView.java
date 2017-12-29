@@ -1,6 +1,6 @@
 package lyl.weather.welcome;
 
-import lyl.weather.base.BaseView;
+import lyl.weather.base.BaseControl;
 
 /**
  * @author lyl
@@ -8,7 +8,7 @@ import lyl.weather.base.BaseView;
  * 接口继承抽象类
  */
 
-public interface WelcomeView extends BaseView{
+public interface WelcomeView extends BaseControl.BaseView{
 
 
     void showView();

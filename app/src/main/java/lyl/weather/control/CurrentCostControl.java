@@ -1,6 +1,6 @@
 package lyl.weather.control;
 
-import lyl.weather.base.BaseView;
+import lyl.weather.base.BaseControl;
 import lyl.weather.model.CurrentCost;
 import lyl.weather.model.CurrentCostDatas;
 
@@ -24,7 +24,7 @@ public interface CurrentCostControl {
 
     }
 
-     interface CurrentCostView extends BaseView {
+     interface CurrentCostView extends BaseControl.BaseView {
 
 
         void initData(CurrentCost currentCost);

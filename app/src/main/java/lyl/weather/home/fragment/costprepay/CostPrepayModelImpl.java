@@ -1,13 +1,13 @@
 package lyl.weather.home.fragment.costprepay;
 
-import lyl.weather.base.IBaseModel;
+import lyl.weather.control.CostPrepayControl;
 
 /**
  * @author lyl
  * @date 2017/12/29.
  */
 
-public class CostPrepayModelImpl implements CostPrepayModel{
+public class CostPrepayModelImpl implements CostPrepayControl.CostPrepayModel {
     @Override
     public void requestServer(RequestListener requestListener) {
 

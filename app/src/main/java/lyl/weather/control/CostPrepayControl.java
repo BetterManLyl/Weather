@@ -1,8 +1,6 @@
 package lyl.weather.control;
 
-import lyl.weather.base.BaseView;
-import lyl.weather.base.IBaseModel;
-import lyl.weather.base.IBasePresenter;
+import lyl.weather.base.BaseControl;
 
 /**
  * @author lyl
@@ -11,15 +9,13 @@ import lyl.weather.base.IBasePresenter;
 
 public interface CostPrepayControl {
 
-    public interface CostPrepayModel extends IBaseModel {
+     interface CostPrepayModel extends BaseControl.IBaseModel {
     }
 
-    public interface CostPrepayPresenter extends IBasePresenter {
+     interface CostPrepayPresenter extends BaseControl.IBasePresenter {
     }
 
-    public interface CostPrepayView extends BaseView {
+     interface CostPrepayView extends BaseControl.BaseView {
         String getEd();
     }
-
-
 }

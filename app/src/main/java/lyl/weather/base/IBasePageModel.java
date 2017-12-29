@@ -6,7 +6,7 @@ package lyl.weather.base;
  * 分页基类
  */
 
-public interface IBasePageModel extends IBaseModel {
+public interface IBasePageModel extends BaseControl.IBaseModel {
 
 
 }

@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import lyl.weather.base.IBaseModel;
+import lyl.weather.base.BaseControl;
 import lyl.weather.base.IBasePageModel;
 import lyl.weather.model.Customers;
 
@@ -17,7 +17,7 @@ import lyl.weather.model.Customers;
 public class ShanghuPresenterImpl implements ShanghuPresenter {
 
     private ShanghuView shanghuView;
-    private IBaseModel shanghuModel;
+    private BaseControl.IBaseModel shanghuModel;
     private Customers customer;
 
     List<Customers.DataBean> dataBeen = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ShanghuPresenterImpl implements ShanghuPresenter {
 
     @Override
     public void requestServer() {
-        shanghuModel.requestServer(new IBaseModel.RequestListener<Customers>() {
+        shanghuModel.requestServer(new BaseControl.IBaseModel.RequestListener<Customers>() {
             @Override
             public void success(Customers customers) {
                 customer = customers;

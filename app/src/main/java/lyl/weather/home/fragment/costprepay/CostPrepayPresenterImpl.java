@@ -2,26 +2,28 @@ package lyl.weather.home.fragment.costprepay;
 
 import android.content.Context;
 
-import lyl.weather.base.IBaseModel;
+
+import lyl.weather.base.BaseControl;
+import lyl.weather.control.CostPrepayControl;
 
 /**
  * @author lyl
  * @date 2017/12/29.
  */
 
-public class CostPrepayPresenterImpl implements CostPrepayPresenter {
+public class CostPrepayPresenterImpl implements CostPrepayControl.CostPrepayPresenter {
 
-    private CostPrepayView costPrepayView;
-    private CostPrepayModel costPrepayModel;
+    private CostPrepayControl.CostPrepayView costPrepayView;
+    private CostPrepayControl.CostPrepayModel costPrepayModel;
 
-    public CostPrepayPresenterImpl(CostPrepayView costPrepayView){
+    public CostPrepayPresenterImpl(CostPrepayControl.CostPrepayView costPrepayView){
         this.costPrepayView=costPrepayView;
         costPrepayModel=new CostPrepayModelImpl();
     }
 
     @Override
     public void requestServer() {
-        costPrepayModel.requestServer(new IBaseModel.RequestListener() {
+        costPrepayModel.requestServer(new BaseControl.IBaseModel.RequestListener() {
             @Override
             public void success(Object o) {
 

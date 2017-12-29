@@ -1,6 +1,6 @@
 package lyl.weather.home.fragment.mine;
 
-import lyl.weather.base.IBaseModel;
+import lyl.weather.base.BaseControl;
 import lyl.weather.control.MineControl;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
@@ -23,7 +23,7 @@ public class MinePresenterImpl implements MineControl.IMinePresenter {
 
     @Override
     public void getUserInfo() {
-        iMineModel.getUserInfo(new IBaseModel.RequestListener<UserInfo>() {
+        iMineModel.getUserInfo(new BaseControl.IBaseModel.RequestListener<UserInfo>() {
             @Override
             public void success(UserInfo userInfo) {
 
@@ -48,7 +48,7 @@ public class MinePresenterImpl implements MineControl.IMinePresenter {
     @Override
     public void getVersionInfo() {
         mineView.showProgress("查询中");
-        iMineModel.versionInfo(new IBaseModel.RequestListener<VersionInfo>() {
+        iMineModel.versionInfo(new BaseControl.IBaseModel.RequestListener<VersionInfo>() {
             @Override
             public void success(VersionInfo response) {
                 //当前版本号

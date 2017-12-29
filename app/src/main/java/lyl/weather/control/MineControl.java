@@ -2,8 +2,7 @@ package lyl.weather.control;
 
 import android.content.Context;
 
-import lyl.weather.base.BaseView;
-import lyl.weather.base.IBaseModel;
+import lyl.weather.base.BaseControl;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
 
@@ -16,9 +15,9 @@ public interface MineControl {
 
     interface IMineModel {
 
-        void getUserInfo(IBaseModel.RequestListener requestListener);
+        void getUserInfo(BaseControl.IBaseModel.RequestListener requestListener);
 
-        void versionInfo(IBaseModel.RequestListener requestListener);
+        void versionInfo(BaseControl.IBaseModel.RequestListener requestListener);
     }
 
     interface IMinePresenter {
@@ -34,7 +33,7 @@ public interface MineControl {
 
     }
 
-    interface MineView extends BaseView {
+    interface MineView extends BaseControl.BaseView {
 
         void getUserInfo(UserInfo userInfo);
 

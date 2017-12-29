@@ -2,8 +2,8 @@ package lyl.weather.home.activity;
 
 import android.text.TextUtils;
 
+import lyl.weather.control.CurrentCostControl;
 import lyl.weather.control.ModifyControl;
-import lyl.weather.home.fragment.currentcost.ICurrentModel;
 import lyl.weather.model.ModifyPassword;
 import lyl.weather.utils.MyUtils;
 
@@ -24,7 +24,7 @@ public class IModifyPresenterImpl implements ModifyControl.IModifyPresenter {
 
     @Override
     public void modifyPassword() {
-        iModifyModel.modifyPass(new ICurrentModel.GetSuccess<ModifyPassword>() {
+        iModifyModel.modifyPass(new CurrentCostControl.ICurrentModel.GetSuccess<ModifyPassword>() {
             @Override
             public void success(ModifyPassword modifyPass) {
                 modifyView.hideProgerss();

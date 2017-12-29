@@ -1,8 +1,7 @@
 package lyl.weather.control;
 
 import lyl.weather.api.ModifyPass;
-import lyl.weather.base.BaseView;
-
+import lyl.weather.base.BaseControl;
 import lyl.weather.model.ModifyPassword;
 
 /**
@@ -29,7 +28,7 @@ public interface ModifyControl {
     }
 
 
-     interface ModifyView extends BaseView {
+     interface ModifyView extends BaseControl.BaseView {
 
 
         String getOldPass();

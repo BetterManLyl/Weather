@@ -19,7 +19,7 @@ import butterknife.Unbinder;
  * @date 2017/12/20.
  */
 
-public abstract class BaseFragment extends Fragment implements BaseView {
+public abstract class BaseFragment extends Fragment implements BaseControl.BaseView {
 
     private Unbinder unbinder;
     public boolean isUIVisible = false;

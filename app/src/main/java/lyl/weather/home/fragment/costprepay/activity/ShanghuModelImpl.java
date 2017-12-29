@@ -1,7 +1,7 @@
 package lyl.weather.home.fragment.costprepay.activity;
 
 import lyl.weather.api.RetrofitUtil;
-import lyl.weather.base.IBaseModel;
+import lyl.weather.base.BaseControl;
 import lyl.weather.model.Customers;
 import lyl.weather.rxutil.ProgressSubscriber;
 import lyl.weather.rxutil.SubscriberOnNextListener;
@@ -11,7 +11,7 @@ import lyl.weather.rxutil.SubscriberOnNextListener;
  * @date 2017/12/29.
  */
 
-public class ShanghuModelImpl implements IBaseModel{
+public class ShanghuModelImpl implements BaseControl.IBaseModel {
 
     private ShanghuPresenter shanghuPresenter;
 
