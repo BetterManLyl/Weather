@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.blankj.utilcode.util.ActivityUtils;
 
 import lyl.weather.home.activity.ModifyPasswordActivity;
+import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
 
 /**
  * @author lyl
@@ -65,7 +66,7 @@ public abstract class BaseRootActivity extends AppCompatActivity implements Base
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (this instanceof ModifyPasswordActivity) {
+        if (this instanceof ModifyPasswordActivity || this instanceof ShangHuActivity) {
             return super.onKeyDown(keyCode, event);
         }
         if (keyCode == KeyEvent.KEYCODE_BACK) {

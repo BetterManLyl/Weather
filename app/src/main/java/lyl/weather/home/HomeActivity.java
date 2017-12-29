@@ -5,13 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +15,12 @@ import java.util.List;
 import butterknife.BindView;
 import lyl.weather.R;
 import lyl.weather.base.BaseActivity;
+import lyl.weather.control.HomeControl;
 import lyl.weather.home.fragment.costprepay.CostPrepayFragment;
 import lyl.weather.home.fragment.currentcost.CurrentCostFragment;
 import lyl.weather.home.fragment.mine.MineFragment;
 import lyl.weather.home.fragment.record.RecordFragment;
 import lyl.weather.utils.Constants;
-import lyl.weather.utils.MyUtils;
 import lyl.weather.view.MyViewPager;
 
 import static lyl.weather.utils.Constants.MENU_COST_PREPARE;
@@ -36,7 +32,7 @@ import static lyl.weather.utils.Constants.MENU_PREPAER_RECORD;
  * @date 2017/12/20.
  */
 
-public class HomeActivity extends BaseActivity implements HomeView {
+public class HomeActivity extends BaseActivity implements HomeControl.HomeView {
     @BindView(R.id.toolbar_title)
     TextView toolBarTitle;
     @BindView(R.id.toolbar)
@@ -45,7 +41,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     MyViewPager vp_pager;
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
-    private HomePresenter homePresenter;
+    private HomeControl.HomePresenter homePresenter;
     private Context context;
 
     private TabAdapter tabAdapter;

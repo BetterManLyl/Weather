@@ -1,6 +1,7 @@
 package lyl.weather.home.activity;
 
 import lyl.weather.api.RetrofitUtil;
+import lyl.weather.control.ModifyControl;
 import lyl.weather.home.fragment.currentcost.ICurrentModel;
 
 import lyl.weather.model.ModifyPassword;
@@ -11,10 +12,10 @@ import rx.Subscriber;
  * @date 2017/12/25.
  */
 
-public class IModifyModelImpl implements IModifyModel {
-    private IModifyPresenter iModifyPresenter;
+public class IModifyModelImpl implements ModifyControl.IModifyModel {
+    private ModifyControl.IModifyPresenter iModifyPresenter;
 
-    public IModifyModelImpl(IModifyPresenter iModifyPresenter) {
+    public IModifyModelImpl(ModifyControl.IModifyPresenter iModifyPresenter) {
         this.iModifyPresenter = iModifyPresenter;
     }
 

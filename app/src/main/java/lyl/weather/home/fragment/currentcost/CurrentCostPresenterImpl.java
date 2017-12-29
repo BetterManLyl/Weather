@@ -2,6 +2,7 @@ package lyl.weather.home.fragment.currentcost;
 
 import java.util.List;
 
+import lyl.weather.control.CurrentCostControl;
 import lyl.weather.model.CurrentCost;
 import lyl.weather.model.CurrentCostDatas;
 
@@ -10,20 +11,20 @@ import lyl.weather.model.CurrentCostDatas;
  * @date 2017/12/20.
  */
 
-public class CurrentCostPresenterImpl implements CurrentCostPresenter<List<CurrentCostDatas.DataBean>> {
+public class CurrentCostPresenterImpl implements  CurrentCostControl.CurrentCostPresenter<List<CurrentCostDatas.DataBean>> {
 
-    private ICurrentModel iCurrentModel;
+    private CurrentCostControl. ICurrentModel iCurrentModel;
 
-    private CurrentCostView currentCostView;
+    private  CurrentCostControl.CurrentCostView currentCostView;
 
-    public CurrentCostPresenterImpl(CurrentCostView currentCostView) {
+    public CurrentCostPresenterImpl( CurrentCostControl.CurrentCostView currentCostView) {
         this.currentCostView = currentCostView;
         iCurrentModel = new ICurrentModelImpl();
     }
 
     @Override
     public void initData() {
-        iCurrentModel.getCurrentCost(new ICurrentModel.GetSuccess<CurrentCost>() {
+        iCurrentModel.getCurrentCost(new  CurrentCostControl.ICurrentModel.GetSuccess<CurrentCost>() {
             @Override
             public void success(CurrentCost currentCost) {
                 currentCostView.initData(currentCost);
@@ -44,7 +45,7 @@ public class CurrentCostPresenterImpl implements CurrentCostPresenter<List<Curre
     @Override
     public void initDataList(String term, int pageIndex, int pageSize, List<CurrentCostDatas.DataBean> dataBeen) {
         currentCostView.showProgress("查询中...");
-        iCurrentModel.getCurrentCostList(new ICurrentModel.GetSuccess<CurrentCostDatas>() {
+        iCurrentModel.getCurrentCostList(new  CurrentCostControl.ICurrentModel.GetSuccess<CurrentCostDatas>() {
             @Override
             public void success(CurrentCostDatas currentCostDatas) {
                 currentCostView.hideProgerss();

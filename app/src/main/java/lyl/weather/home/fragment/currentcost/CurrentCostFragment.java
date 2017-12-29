@@ -16,18 +16,17 @@ import butterknife.BindView;
 import lyl.weather.R;
 import lyl.weather.adapter.CurrentTimeCostAdapter;
 import lyl.weather.base.BaseFragment;
+import lyl.weather.control.CurrentCostControl;
 import lyl.weather.model.CurrentCost;
 import lyl.weather.model.CurrentCostDatas;
-import lyl.weather.utils.MyUtils;
 import lyl.weather.view.DividerItemDecoration;
-import lyl.weather.view.FullyLinearLayoutManager;
 
 /**
  * @author lyl
  * @date 2017/12/20.
  */
 
-public class CurrentCostFragment extends BaseFragment implements CurrentCostView {
+public class CurrentCostFragment extends BaseFragment implements CurrentCostControl.CurrentCostView {
 
     @BindView(R.id.ed_search_merchants)
     EditText edSearchMerchants;
@@ -48,7 +47,7 @@ public class CurrentCostFragment extends BaseFragment implements CurrentCostView
     @BindView(R.id.ll_no_data)
     LinearLayout llNoData;
 
-    private CurrentCostPresenter currentCostPresenter;
+    private  CurrentCostControl.CurrentCostPresenter currentCostPresenter;
 
 
     private int pageSize = 20;

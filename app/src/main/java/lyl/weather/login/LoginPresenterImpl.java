@@ -13,17 +13,14 @@ import lyl.weather.home.HomeActivity;
  * @date 2017/12/20.
  */
 
-public class LoginPresenterImpl implements LoginPresenter {
+public class LoginPresenterImpl implements LoginControl.LoginPresenter {
 
-    private LoginView loginView;
-    private IloginModel iloginModel;
+    private LoginControl.LoginView loginView;
+    private LoginControl.IloginModel iloginModel;
 
-    private LocalCfg localCfg;
-
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginControl.LoginView loginView) {
         this.loginView = loginView;
         iloginModel = new IloginModelImp(this);
-        localCfg = new LocalCfg();
     }
 
 

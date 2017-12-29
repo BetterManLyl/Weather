@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Model接口基类
  */
 
-public interface IBaseModel{
+public interface IBaseModel<T>{
 
     /**
      *

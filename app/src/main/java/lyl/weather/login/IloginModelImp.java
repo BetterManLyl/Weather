@@ -22,15 +22,14 @@ import rx.Subscriber;
  * @date 2017/12/21.
  */
 
-public class IloginModelImp implements IloginModel {
+public class IloginModelImp implements LoginControl.IloginModel {
 
     private String userPassMd = "";
 
-    private LoginPresenter loginPresenter;
+    private LoginControl.LoginPresenter loginPresenter;
 
-    public IloginModelImp(LoginPresenter loginPresenter) {
+    public IloginModelImp(LoginControl.LoginPresenter loginPresenter) {
         this.loginPresenter = loginPresenter;
-
     }
 
     @Override

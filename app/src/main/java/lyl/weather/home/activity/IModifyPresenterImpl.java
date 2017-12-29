@@ -2,6 +2,7 @@ package lyl.weather.home.activity;
 
 import android.text.TextUtils;
 
+import lyl.weather.control.ModifyControl;
 import lyl.weather.home.fragment.currentcost.ICurrentModel;
 import lyl.weather.model.ModifyPassword;
 import lyl.weather.utils.MyUtils;
@@ -11,12 +12,12 @@ import lyl.weather.utils.MyUtils;
  * @date 2017/12/25.
  */
 
-public class IModifyPresenterImpl implements IModifyPresenter {
+public class IModifyPresenterImpl implements ModifyControl.IModifyPresenter {
 
-    private ModifyView modifyView;
-    private IModifyModel iModifyModel;
+    private ModifyControl.ModifyView modifyView;
+    private ModifyControl.IModifyModel iModifyModel;
 
-    public IModifyPresenterImpl(ModifyView modifyView) {
+    public IModifyPresenterImpl(ModifyControl.ModifyView modifyView) {
         this.modifyView = modifyView;
         iModifyModel = new IModifyModelImpl(this);
     }

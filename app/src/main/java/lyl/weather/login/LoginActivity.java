@@ -18,7 +18,7 @@ import lyl.weather.base.BaseActivity;
  * 登录
  */
 
-public class LoginActivity extends BaseActivity implements LoginView {
+public class LoginActivity extends BaseActivity implements LoginControl.LoginView {
 
     @BindView(R.id.imageView)
     ImageView imageView;
@@ -31,7 +31,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @BindView(R.id.content)
     LinearLayout content;
 
-    private LoginPresenter loginPresenter;
+    private LoginControl.LoginPresenter loginPresenter;
 
 
     @Override
@@ -49,15 +49,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
         loginPresenter.login(edUserName.getText().toString(), edUserPass.getText().toString());
     }
 
-    @Override
-    public String getUserName() {
-        return edUserName.getText().toString();
-    }
-
-    @Override
-    public String getUserPass() {
-        return edUserPass.getText().toString();
-    }
 
     @Override
     public void filter(String message) {
@@ -69,18 +60,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
         startActivity(new Intent(this, c));
         finish();
     }
-
-    @Override
-    public void initEd(String userName,String userPass) {
-        edUserName.setText(userName);
-        edUserPass.setText(userPass);
-    }
-
-    @Override
-    public void loginSuccess() {
-
-    }
-
 
     @Override
     public void showToast(String message) {

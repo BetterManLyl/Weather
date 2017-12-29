@@ -1,5 +1,6 @@
 package lyl.weather.home.fragment.costprepay;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import lyl.weather.R;
 import lyl.weather.base.BaseFragment;
+import lyl.weather.base.BaseView;
+import lyl.weather.event.SearchEvent;
 import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
 
 /**
@@ -23,7 +29,7 @@ import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
  * 费用预缴
  */
 
-public class CostPrepayFragment extends BaseFragment {
+public class CostPrepayFragment extends BaseFragment implements CostPrepayView {
     @BindView(R.id.tv_cost_prepare_shanghu)
     TextView tvCostPrepareShanghu;
     @BindView(R.id.tv_message)
@@ -36,7 +42,9 @@ public class CostPrepayFragment extends BaseFragment {
     EditText edMoney;
     @BindView(R.id.btn_next_step)
     Button btnNextStep;
-    Unbinder unbinder;
+    private int id;
+
+    private CostPrepayPresenter costPresenter;
 
     public static CostPrepayFragment newInstance() {
         CostPrepayFragment costPrepayFragment = new CostPrepayFragment();
@@ -45,6 +53,7 @@ public class CostPrepayFragment extends BaseFragment {
         return costPrepayFragment;
     }
 
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_cost_prepare;
@@ -52,29 +61,66 @@ public class CostPrepayFragment extends BaseFragment {
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
+        costPresenter = new CostPrepayPresenterImpl(this);
+    }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 选择完商户后的处理事件
+     *
+     * @param searchEvent
+     */
+    @Subscribe
+    public void onEvent(SearchEvent searchEvent) {
+        tvLeftMoney.setVisibility(View.VISIBLE);
+        tvMessage.setVisibility(View.VISIBLE);
+        if (searchEvent.getMoney().contains("-")) {
+            tvLeftMoney.setText(searchEvent.getMoney());
+            //红色
+            tvLeftMoney.setTextColor(Color.parseColor("#f76262"));
+        } else {
+            //绿色
+            tvLeftMoney.setTextColor(Color.parseColor("#12db62"));
+            if (searchEvent.getMoney().equals("0.00")) {
+                tvLeftMoney.setText(searchEvent.getMoney());
+            } else {
+                tvLeftMoney.setText("+" + searchEvent.getMoney());
+            }
+        }
+        tvCostPrepareShanghu.setText(searchEvent.getMessage());
+        id = searchEvent.getId();
     }
 
 
-    @OnClick({R.id.tv_cost_prepare_shanghu, R.id.tv_message, R.id.tv_left_money,
-            R.id.ll_prepare_tenant, R.id.ed_money, R.id.btn_next_step})
+    @OnClick({R.id.ll_prepare_tenant, R.id.ed_money, R.id.btn_next_step})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_cost_prepare_shanghu:
-                break;
-            case R.id.tv_message:
-                break;
-            case R.id.tv_left_money:
-                break;
             case R.id.ll_prepare_tenant:
                 goActivity(ShangHuActivity.class);
                 break;
-            case R.id.ed_money:
-                break;
             case R.id.btn_next_step:
+                nextStep();
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 下一步
+     */
+    private void nextStep() {
+        costPresenter.requestServer();
+    }
+
+    @Override
+    public String getEd() {
+        return edMoney.getText().toString();
     }
 }

@@ -7,7 +7,7 @@ import android.content.Context;
  * @date 2017/12/22.
  */
 
-public interface IBasePresenter<T> {
+public interface IBasePresenter {
 
 
     void requestServer();

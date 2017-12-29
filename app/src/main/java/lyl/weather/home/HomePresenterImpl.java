@@ -1,16 +1,18 @@
 package lyl.weather.home;
 
+import lyl.weather.control.HomeControl;
+
 /**
  * @author lyl
  * @date 2017/12/20.
  */
 
-public class HomePresenterImpl implements HomePresenter {
+public class HomePresenterImpl implements HomeControl.HomePresenter {
 
-    private HomeView homeView;
-    private IHomeModel iHomeModel;
+    private HomeControl.HomeView homeView;
+    private HomeControl.IHomeModel iHomeModel;
 
-    public HomePresenterImpl(HomeView homeView) {
+    public HomePresenterImpl(HomeControl.HomeView homeView) {
         this.homeView = homeView;
         iHomeModel = new IHomeModelImpl();
     }
@@ -23,7 +25,7 @@ public class HomePresenterImpl implements HomePresenter {
 
     @Override
     public void initMenu() {
-        iHomeModel.getMenu(new IHomeModel.GetMenuListener() {
+        iHomeModel.getMenu(new HomeControl.IHomeModel.GetMenuListener() {
             @Override
             public void has() {
                 homeView.init(getTitles(), true);

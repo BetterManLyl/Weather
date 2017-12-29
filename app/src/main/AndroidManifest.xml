@@ -28,7 +28,10 @@
         </activity>
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".home.HomeActivity" />
-        <activity android:name=".home.activity.ModifyPasswordActivity"/>
+        <activity android:name=".home.activity.ModifyPasswordActivity" />
+        <activity
+            android:name=".home.fragment.costprepay.activity.ShangHuActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

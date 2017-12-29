@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import lyl.weather.R;
 import lyl.weather.base.BaseFragment;
+import lyl.weather.control.MineControl;
 import lyl.weather.home.activity.ModifyPasswordActivity;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
@@ -21,7 +22,7 @@ import lyl.weather.model.VersionInfo;
  * @date 2017/12/21.
  */
 
-public class MineFragment extends BaseFragment implements MineView {
+public class MineFragment extends BaseFragment implements MineControl.MineView {
 
 
     @BindView(R.id.tv_mine_username)
@@ -41,7 +42,7 @@ public class MineFragment extends BaseFragment implements MineView {
         return mineFragment;
     }
 
-    private IMinePresenter iMinePresenter;
+    private MineControl.IMinePresenter iMinePresenter;
 
     @Override
     public int getLayoutId() {

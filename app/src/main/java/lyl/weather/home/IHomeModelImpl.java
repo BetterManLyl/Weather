@@ -4,6 +4,7 @@ import com.rn.base.user.LocalCfg;
 import com.rn.base.user.UserInfo;
 
 import lyl.weather.api.RetrofitUtil;
+import lyl.weather.control.HomeControl;
 import lyl.weather.utils.MyUtils;
 import rx.Subscriber;
 
@@ -12,7 +13,7 @@ import rx.Subscriber;
  * @date 2017/12/21.
  */
 
-public class IHomeModelImpl implements IHomeModel {
+public class IHomeModelImpl implements HomeControl.IHomeModel {
 
     private boolean isHas = false;
     private LocalCfg localCfg = new LocalCfg();

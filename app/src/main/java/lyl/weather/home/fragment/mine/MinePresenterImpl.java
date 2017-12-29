@@ -1,6 +1,7 @@
 package lyl.weather.home.fragment.mine;
 
 import lyl.weather.base.IBaseModel;
+import lyl.weather.control.MineControl;
 import lyl.weather.model.UserInfo;
 import lyl.weather.model.VersionInfo;
 import lyl.weather.utils.MyUtils;
@@ -10,12 +11,12 @@ import lyl.weather.utils.MyUtils;
  * @date 2017/12/22.
  */
 
-public class MinePresenterImpl implements IMinePresenter {
+public class MinePresenterImpl implements MineControl.IMinePresenter {
 
-    private MineView mineView;
-    private IMineModel iMineModel;
+    private MineControl.MineView mineView;
+    private MineControl.IMineModel iMineModel;
 
-    public MinePresenterImpl(MineView mineView) {
+    public MinePresenterImpl(MineControl.MineView mineView) {
         this.mineView = mineView;
         iMineModel = new MineModelImpl(this);
     }

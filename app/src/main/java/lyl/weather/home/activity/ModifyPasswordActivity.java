@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import lyl.weather.R;
 import lyl.weather.base.BaseActivity;
+import lyl.weather.control.ModifyControl;
 import lyl.weather.utils.Constants;
 import lyl.weather.utils.MyUtils;
 import rx.android.schedulers.AndroidSchedulers;
@@ -23,7 +24,7 @@ import rx.functions.Action1;
  * @date 2017/12/25.
  */
 
-public class ModifyPasswordActivity extends BaseActivity implements ModifyView {
+public class ModifyPasswordActivity extends BaseActivity implements ModifyControl.ModifyView {
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
     @BindView(R.id.ed_old_password)
@@ -37,7 +38,7 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private IModifyPresenter iModifyPresenter;
+    private ModifyControl.IModifyPresenter iModifyPresenter;
 
 
     @Override

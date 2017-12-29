@@ -225,9 +225,11 @@ public class MyUtils {
      */
     public static void closeSysBoard(Activity activity) {
         try {
-            InputMethodManager imm = (InputMethodManager) activity.getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getApplication()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm.isActive()) {
-                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getApplicationWindowToken(), 0);
+                imm.hideSoftInputFromWindow(activity.getCurrentFocus()
+                        .getApplicationWindowToken(), 0);
             }
         } catch (Exception e) {
         }

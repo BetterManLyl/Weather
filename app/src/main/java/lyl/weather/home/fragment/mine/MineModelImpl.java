@@ -4,6 +4,7 @@ import com.rn.base.user.LocalCfg;
 
 import lyl.weather.api.RetrofitUtil;
 import lyl.weather.base.IBaseModel;
+import lyl.weather.control.MineControl;
 import lyl.weather.model.VersionInfo;
 import rx.Subscriber;
 
@@ -12,11 +13,11 @@ import rx.Subscriber;
  * @date 2017/12/22.
  */
 
-public class MineModelImpl implements IMineModel {
+public class MineModelImpl implements MineControl.IMineModel {
 
-    private IMinePresenter iMinePresenter;
+    private MineControl.IMinePresenter iMinePresenter;
 
-    public MineModelImpl(IMinePresenter iMinePresenter) {
+    public MineModelImpl(MineControl.IMinePresenter iMinePresenter) {
         this.iMinePresenter = iMinePresenter;
     }
 

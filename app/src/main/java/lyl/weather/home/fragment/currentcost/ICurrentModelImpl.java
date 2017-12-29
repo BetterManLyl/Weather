@@ -1,7 +1,7 @@
 package lyl.weather.home.fragment.currentcost;
 
 import lyl.weather.api.RetrofitUtil;
-import lyl.weather.base.IBaseModel;
+import lyl.weather.control.CurrentCostControl;
 import lyl.weather.model.CurrentCost;
 import lyl.weather.model.CurrentCostDatas;
 import rx.Subscriber;
@@ -11,7 +11,7 @@ import rx.Subscriber;
  * @date 2017/12/21.
  */
 
-public class ICurrentModelImpl implements ICurrentModel {
+public class ICurrentModelImpl implements  CurrentCostControl.ICurrentModel {
 
 
     @Override
