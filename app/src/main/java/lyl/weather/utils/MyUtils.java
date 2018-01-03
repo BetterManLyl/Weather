@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Rect;
+import android.nfc.Tag;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -20,6 +21,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.EditText;
+
+import com.blankj.utilcode.util.LogUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -45,10 +48,10 @@ public class MyUtils {
 
     private static int densityDpi = 0;
 
-    private static final String TAG = "lyl";
+    private static final String TAG = "lyl1";
 
     public static void loge(String message) {
-        Log.e(TAG, "loge: " + message);
+        LogUtils.eTag(TAG,message);
     }
 
     /**

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/ac_toolbar"></include>
+    <include layout="@layout/ac_toolbar"/>
 
     <LinearLayout
         style="@style/linearLayoutStyle"
@@ -24,7 +24,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colore5e5e5"></View>
+        android:background="@color/colore5e5e5"/>
 
     <LinearLayout style="@style/linearLayoutStyle">
 
@@ -42,7 +42,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colore5e5e5"></View>
+        android:background="@color/colore5e5e5"/>
 
     <LinearLayout style="@style/linearLayoutStyle">
 

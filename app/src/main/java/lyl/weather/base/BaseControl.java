@@ -10,7 +10,7 @@ import android.content.Context;
 public interface BaseControl {
 
 
-     interface BaseView {
+    interface BaseView {
         /**
          * toast
          *
@@ -38,10 +38,10 @@ public interface BaseControl {
         Context getContext();
 
     }
-     interface IBaseModel<T>{
+
+    interface IBaseModel<T> {
 
         /**
-         *
          * @param requestListener
          * @param
          */
@@ -54,7 +54,6 @@ public interface BaseControl {
 
 
         /**
-         *
          * @param <T>
          */
         interface RequestListener<T> {
@@ -64,12 +63,12 @@ public interface BaseControl {
         }
     }
 
-     interface IBasePresenter {
+    interface  IBasePresenter {
 
 
-        void requestServer();
+         void requestServer();
 
-        Context getContext();
+         Context getContext();
     }
 
 }

@@ -1,5 +1,7 @@
 package lyl.weather.api;
 
+import java.util.zip.Adler32;
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

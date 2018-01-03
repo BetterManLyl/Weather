@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import lyl.weather.R;
-import lyl.weather.login.LoginActivity;
+import lyl.weather.moudle.login.LoginActivity;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -31,11 +31,17 @@ import rx.functions.Func1;
  * @date 2017/12/20.
  */
 
-public abstract class BaseActivity extends BaseRootActivity  {
+public abstract class BaseActivity<T extends BaseControl.IBasePresenter,
+        V extends BaseControl.BaseView> extends BaseRootActivity {
+
     public LocalCfg localCfg;
     Unbinder unbinder;
 
     private View rootView;
+
+    public T presenter;
+    public V view;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +51,16 @@ public abstract class BaseActivity extends BaseRootActivity  {
         ActivitiManager.addActivity(this);
         unbinder = ButterKnife.bind(this);
         localCfg = new LocalCfg();
+        setTV(presenter, view);
         initView();
+
     }
+
+    public void setTV(T presenter, V view) {
+        this.presenter = presenter;
+        this.view = view;
+    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

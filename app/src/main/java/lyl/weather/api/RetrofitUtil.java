@@ -63,7 +63,12 @@ public class RetrofitUtil {
          * 添加拦截器
          * 添加公共的header 请求头
          */
-        builder.addInterceptor(interceptor);
+        if (type == 1) {
+
+        } else {
+            builder.addInterceptor(interceptor);
+        }
+
         mRetrofit = new Retrofit.Builder()
                 .client(builder.build())
                 .baseUrl("http://36.7.144.130:6020/")
@@ -77,6 +82,10 @@ public class RetrofitUtil {
     }
 
     public static RetrofitUtil getInstance() {
+        if (type == 1) {
+            mInstance = null;
+        }
+        type = 2;
         if (mInstance == null) {
             synchronized (RetrofitUtil.class) {
                 mInstance = new RetrofitUtil();
@@ -84,6 +93,15 @@ public class RetrofitUtil {
         }
         return mInstance;
     }
+
+    public static int type = 1;
+
+    public static RetrofitUtil getInstance1() {
+        mInstance = new RetrofitUtil();
+        type = 1;
+        return mInstance;
+    }
+
 
     /**
      * 登录

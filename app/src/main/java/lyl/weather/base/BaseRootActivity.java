@@ -10,8 +10,9 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.ActivityUtils;
 
-import lyl.weather.home.activity.ModifyPasswordActivity;
-import lyl.weather.home.fragment.costprepay.activity.ShangHuActivity;
+import lyl.weather.api.RetrofitUtil;
+import lyl.weather.moudle.home.activity.ModifyPasswordActivity;
+import lyl.weather.moudle.home.fragment.costprepay.activity.ShangHuActivity;
 
 /**
  * @author lyl
@@ -60,6 +61,7 @@ public abstract class BaseRootActivity extends AppCompatActivity implements Base
 
     /**
      * 返回键监听
+     *
      * @param keyCode
      * @param event
      * @return
@@ -74,6 +76,7 @@ public abstract class BaseRootActivity extends AppCompatActivity implements Base
                 Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 currentTime = System.currentTimeMillis();
             } else {
+                RetrofitUtil.type=1;
                 ActivityUtils.finishAllActivities();
                 finish();
             }

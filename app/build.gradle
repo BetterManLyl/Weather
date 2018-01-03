@@ -10,6 +10,8 @@ android {
         versionCode 2017
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,6 +19,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+
+        dev {
+            minSdkVersion 21
+        }
+        prod {
+            minSdkVersion 15
+        }
+    }
+
 
     sourceSets {
         main {
@@ -42,6 +55,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
+    //解决方法数超过65535
+    compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
     //非常齐全的工具类
     compile 'com.blankj:utilcode:1.9.10'
